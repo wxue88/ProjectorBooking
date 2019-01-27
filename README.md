@@ -12,18 +12,6 @@ Design and build a simple “Projector Management System” that manages access 
 * Separate the responsibilities of different classes and methods. 
 * Use efficient data structures to manage and see the availability of the projectors and extensibility of future requirements (for example, instead of simply denying a request when there is no availability, we should be able suggest the closest times to initial request when a projector could be allocated).
 
-## Example scenarios to support:
-
-Let’s say the 3 projectors are P1, P2 and P3 and the 5 teams are Team1, Team2, Team3, Team4 and Team5.
-Here’s a scenario we need to support:
-
-1.	Team1 requests a projector on a given date from 10:00 am to 12:00 pm => (System can assign P1)
-2.	Team2 requests a projector on the same day from 10:30 am to 11:30 am => (System cannot assign P1 as it is overlapping with Team1’s reserved slot, but it can assign P2)
-3.	Team3 requests a projector from 11:10 am to 12:00 pm => (System cannot assign P1 or P2 but can assign P3, etc.)
-4.	Team4 requests a projector between 11:00 am - 11:30 am => (System cannot assign any projectors now since they’re all taken)
-5.	Team1 cancels their 10am - 12pm slot => System frees up P1
-6.	Team4 wants a projector between 10am and 11am => System assigns P1
-
 ## Design:
 
 * Database design:
@@ -52,7 +40,7 @@ DELETE   -  /v1/bookings/{id}                                                   
 GET      -  /v1/bookings/projectors?start_time={start_time}&end_time={end_time}&[advice=true]   Get available projector with requested time slot
 ```
 
-* Technologies:
+## Technologies:
 ```
 1.Spring Boot - 2.1.2.RELEASE
 2.Spring Data JPA - 2.1.2 RELEASE (includes hibernate)
@@ -62,11 +50,10 @@ GET      -  /v1/bookings/projectors?start_time={start_time}&end_time={end_time}&
 6.Maven - 4.0
 ```
 
-## Deployment and Testing
+## Deployment
 1. Clone the application
 ```
 git clone 
-
 ```
 2. Create Mysql database
 ```
@@ -79,6 +66,16 @@ mvn spring-boot:run
 ```
 5. Application will start running at http://localhost:8080
 6. Application REST API document can be found at http://localhost:8080/swagger-ui.html
-7. Application REST API testing including the example scenarios above have been done on both unit tests and Postman. All the screenshots have been captured in ProjectorBooking_Screenshots.doc
+
+## Testing
+Application REST API testing including the following scenarios above have been done on both unit tests and Postman. All the screenshots have been captured in ProjectorBooking_Screenshots.doc
+```
+1.	Team1 requests a projector on a given date from 10:00 am to 12:00 pm => (System can assign Projector1)
+2.	Team2 requests a projector on the same day from 10:30 am to 11:30 am => (System cannot assign Projector1 as it is overlapping with Team1’s reserved slot, but it can assign Projector2)
+3.	Team3 requests a projector from 11:10 am to 12:00 pm => (System cannot assign Projector1 or Projector2 but can assign Projector3, etc.)
+4.	Team4 requests a projector between 11:00 am - 11:30 am => (System cannot assign any projectors now since they’re all taken)
+5.	Team1 cancels their 10am - 12pm slot => System frees up Projector1
+6.	Team4 wants a projector between 10am and 11am => System assigns Projector1
+```
 
 
