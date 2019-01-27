@@ -3,8 +3,6 @@ package com.assignment.projectorbooking.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.assignment.projectorbooking.exception.ResourceNotFoundException;
@@ -41,7 +39,7 @@ public class ProjectorServiceImpl implements ProjectorService {
 		Projector projector = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Projector", "id", id));
 		repository.delete(projector);
 	}
-	
+
 	@Override
 	public void cleanUpTables() {
 		repository.deleteAllInBatch();
