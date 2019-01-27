@@ -47,13 +47,13 @@ public class BookingController {
 	
 	private static final String PROPOSE_NEW_START_TIME = "Propose new start time:"; 
 	
-	@ApiOperation(value = "Request a projector booking", response = ResponseEntity.class)
+	@ApiOperation(value = "Request a projector booking")
 	@PostMapping
 	public ResponseEntity<Booking> createBooking(@Valid @RequestBody Booking booking) throws ResourceNotFoundException {
 		return new ResponseEntity<Booking>(bookingService.createBooking(booking), HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "Get a projector booking with an ID", response = ResponseEntity.class)
+	@ApiOperation(value = "Get a projector booking with an ID")
 	@GetMapping("/{id}")
 	public ResponseEntity<Booking> getBooking(@PathVariable(value="id") int id) throws ResourceNotFoundException {
 		Booking booking = bookingService.getBooking(id);
