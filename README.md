@@ -68,7 +68,7 @@ mvn spring-boot:run
 6. Application REST API document can be found at http://localhost:8080/swagger-ui.html
 
 ## Testing
-Application REST API testing including the following scenarios above have been done on both unit tests and Postman. All the screenshots have been captured in ProjectorBooking_Screenshots.doc
+Application REST API testing including the following scenarios have been done on both unit tests and Postman. All the screenshots have been captured in ProjectorBooking_Screenshots.doc
 ```
 1.	Team1 requests a projector on a given date from 10:00 am to 12:00 pm => (System can assign Projector1)
 2.	Team2 requests a projector on the same day from 10:30 am to 11:30 am => (System cannot assign Projector1 as it is overlapping with Team1’s reserved slot, but it can assign Projector2)
