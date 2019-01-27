@@ -31,10 +31,6 @@ public class Projector {
 	public Projector() {
 		
 	}
-	
-	/*public Projector(String name) {
-		this.name = name;
-	}*/
 
 	public int getId() {
 		return id;
@@ -52,7 +48,6 @@ public class Projector {
 		this.name = name;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Projector [id=" + id + ", name=" + name + "]";
